@@ -1,5 +1,5 @@
 using GuiltyGearRepository.WebAPI.Contexts;
-using GuiltyGearRepository.WebAPI.Services;
+using GuiltyGearRepository.WebAPI.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

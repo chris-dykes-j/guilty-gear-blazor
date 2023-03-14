@@ -35,6 +35,4 @@ public class XrdMove
     public string? OnBlock { get; set; }
 
     public string? Invulnerability { get; set; }
-
-    public virtual XrdCharacter? Character { get; set; }
 }

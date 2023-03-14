@@ -1,5 +1,5 @@
 using GuiltyGearRepository.WebAPI.Entities;
-using GuiltyGearRepository.WebAPI.Services;
+using GuiltyGearRepository.WebAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GuiltyGearRepository.WebAPI.Controllers;
@@ -22,24 +22,14 @@ public class XrdController : ControllerBase
     [Route("{name}")]
     public async Task<ActionResult<XrdController>> GetCharacterByName(string name)
     {
-        var characterEntity = await _repository.GetCharacterByNameAsync(name);
-        if (characterEntity == null)
+        var character = await _repository.GetCharacterByNameAsync(name);
+        if (character == null)
             return NotFound();
-        return Ok(characterEntity);
+        return Ok(character);
     }
 
     [HttpGet]
-    [Route("{characterName}/moves")]
-    public async Task<ActionResult<IEnumerable<XrdMove>>> GetMoveListNoData(string characterName)
-    {
-        var characterMoves = await _repository.GetMovesForCharacterAsync(characterName);
-        if (characterMoves == null)
-            return NotFound();
-        return Ok(characterMoves);
-    }
-    
-    [HttpGet]
-    [Route(template: "{characterName}/moves/{moveName}")]
+    [Route(template: "{characterName}/{moveName}")]
     public async Task<ActionResult<IEnumerable<XrdMove>>> GetMoveData(string characterName, string moveName)
     {
         var move = await _repository.GetMoveDataForCharacterAsync(characterName, moveName);

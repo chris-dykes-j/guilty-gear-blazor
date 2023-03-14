@@ -25,6 +25,4 @@ public class XrdCharacter
     public string? WakeUpFaceDown { get; set; }
 
     public string? UniqueMovement { get; set; }
-
-    public virtual ICollection<XrdMove> XrdMoveLists { get; } = new List<XrdMove>();
 }

@@ -54,10 +54,6 @@ public class GuiltyGearDb : DbContext
             entity.Property(e => e.RiscP).HasColumnName("risc_p");
             entity.Property(e => e.Startup).HasColumnName("startup");
             entity.Property(e => e.Tension).HasColumnName("tension");
-
-            entity.HasOne(d => d.Character).WithMany(p => p.XrdMoveLists)
-                .HasForeignKey(d => d.CharacterId)
-                .HasConstraintName("xrd_move_list_character_id_fkey");
         });
     }
 }
